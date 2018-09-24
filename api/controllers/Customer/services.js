@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const serviceModel = require("../../models/services");
-const toImgUrl = require('../utils/index')
+const toImgUrl = require('../../utils/index')
 
 
 
