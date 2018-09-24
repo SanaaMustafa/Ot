@@ -11,14 +11,10 @@ exports.createService = async (req, res, next) => {
     req.body.img = await toImgUrl.toImgUrl(req.file);
 
     let createdObj = await serviceModel.create(req.body);
-    return res.status(200).json(returnedObject);
+    return res.status(200).json(createdObj);
 };
 
 
-exports.getAll = async (req, res, next) => {
-    let details = await serviceModel.find();
-    return res.status(200).json(details);
-};
 
 //update one
 

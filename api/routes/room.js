@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const crypto = require('crypto');
@@ -5,7 +6,7 @@ const mime = require('mime');
 const multer = require('multer');
 
 const RoomCustomerController = require('../controllers/Customer/room');
-const RoomAdminController = require('../controllers/Admin/services')
+const RoomAdminController = require('../controllers/Admin/room')
 const checkAuth = require('../middelware/check-auth');
 
 const storage = multer.diskStorage({
@@ -28,8 +29,18 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+const upload = multer({
+  storage: storage,
+});
+
+//customer region
+
 router.get('/room',checkAuth,RoomCustomerController.getAllForUsers);
 router.get('/room/:roomId',checkAuth,RoomCustomerController.getOneForUsers);
+
+//Admin region
+router.post('/room',checkAuth,upload.array('imgs'),RoomAdminController.createRoom);
+router.put('/room/:roomId',checkAuth,upload.array('imgs'),RoomAdminController.updateRoom);
 
 
 module.exports=router;

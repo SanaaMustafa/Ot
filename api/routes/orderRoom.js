@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 const OrderRoomCustomerController = require('../controllers/Customer/orderRoom');
-const OrderRoomAdminController = require('../controllers/Admin/services')
+const OrderRoomAdminController = require('../controllers/Admin/orderRoom')
 const checkAuth = require('../middelware/check-auth');
 
 //customer region
@@ -14,5 +14,11 @@ router.put('/room/:roomId/customer-order/:ordId',checkAuth,OrderRoomCustomerCont
 
 
 //Admin region 
+router.get('/room/:roomId/admin',checkAuth,OrderRoomAdminController.getAll);
+router.get('/room/:roomId/admin/:ordId',checkAuth,OrderRoomAdminController.getOne);
+router.put('/room/:roomId/admin/:ordId/accept',checkAuth,OrderRoomAdminController.updateAccept);
+router.put('/room/:roomId/admin/:ordId/cancle',checkAuth,OrderRoomAdminController.updatereject);
+
+
 
 module.exports=router;

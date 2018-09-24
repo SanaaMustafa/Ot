@@ -36,5 +36,10 @@ const upload = multer({
 
 router.get('/service',checkAuth,ServiceCustomerController.getAll);
 
+//Admin region 
+
+router.post('/service',checkAuth,upload.single('img'),ServiceAdminController.createService);
+router.put('/service/:serId',checkAuth,upload.single('img'),ServiceAdminController.updateService);
+
 
 module.exports=router;
