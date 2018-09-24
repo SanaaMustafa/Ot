@@ -9,8 +9,10 @@ dbconnection();
 
 
 const userRoutes = require('./api/routes/user');
-const requestRoutes = require('./api/routes/request');
-const notifRoutes= require('./api/routes/notification');
+const serviceRoutes = require('./api/routes/service');
+const orderServiceRoutes = require('./api/routes/orderService');
+const roomRoutes = require('./api/routes/room');
+const orderRoomroutes = require('./api/routes/orderRoom');
 
 
 app.use(morgan("dev"));
@@ -35,8 +37,11 @@ app.use(express.static("upload"));
 
 
 app.use("/", userRoutes);
-app.use('/request',requestRoutes);
-app.use('/notif',notifRoutes);
+app.use('/',serviceRoutes);
+app.use('/',orderServiceRoutes);
+app.use('/',roomRoutes);
+app.use('/',orderRoomroutes);
+
 
 
 app.use((req, res, next) => {

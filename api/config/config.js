@@ -1,5 +1,5 @@
 module.exports=function ConnectMongoDB(){
     const mongoose = require('mongoose');
-    mongoose.connect('mongodb://don:don123@ds149732.mlab.com:49732/donation')
+    mongoose.connect('mongodb://ot:ot1234@ds231460.mlab.com:31460/ot')
 }
 
